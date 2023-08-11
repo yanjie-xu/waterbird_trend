@@ -1,0 +1,86 @@
+---
+title: "Multi-species model (Total abundance)"
+author: "Yanjie Xu"
+date: '2023-08-07'
+output:
+  html_document:
+    keep_md: yes
+  pdf_document: default
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r package, results = "hide"}
+library(glmmTMB)
+library(ggplot2)
+library(ggeffects)
+library (MuMIn)
+library(performance)
+```
+
+
+## The data
+```{r, eval=TRUE}
+mod.data = read.csv('data4model3.csv')
+mod.data$NN = scale(mod.data$NNN)
+mod.data$ProtectStatus = factor(mod.data$ProtectStatus, levels=c('Non-protect', 'Protect-Non-Helmi', 'Protect-Helmi'))
+str(mod.data)
+```
+
+
+## 1. Test whether the restored sites are in Helmi
+```{r, eval=TRUE}
+mod1 = glmmTMB(Hoito2020~ProtectStatus, 
+               data=mod.data,family="binomial", REML=FALSE)
+summary(mod1)
+#r.squaredGLMM(mod1)
+
+#plot - mod1
+dat1 = ggpredict(mod1, terms = "ProtectStatus")
+plot(dat1) + theme_classic()
+#ggsave('restore_protect.png', dpi = 300)
+```
+
+
+## 2. Test the effect of protect status on waterbird abundance and population trends
+```{r, eval=TRUE}
+mod2=glmmTMB(TotalAbundance~
+                 ProtectStatus*scale(Vuosi)+
+                 poly(NN,2)+
+                (1|SiteID), 
+               data=mod.data,family = nbinom2, REML=FALSE)
+
+summary(mod2)
+r.squaredGLMM(mod2)
+check_collinearity(mod2)
+
+#plot - mod2
+dat2 = ggpredict(mod2, terms = c("Vuosi[all]","ProtectStatus"))
+plot(dat2) + theme_classic()
+#ggsave('protect.png', dpi = 300)
+```
+
+
+## 3. Test the effect of restoration action before 2020 on waterbird abundance and population trends
+### For mod3, only the protected sites are included
+```{r, eval=TRUE}
+mod.data2 = mod.data[mod.data$ProtectStatus!='Non-protect',]
+mod.data2$Hoito2020 = as.factor(mod.data2$Hoito2020)
+
+mod3=glmmTMB(TotalAbundance~Hoito2020*scale(Vuosi)+
+                 poly(NN,2)+
+                 (1|SiteID), 
+               data=mod.data2,family = nbinom2, REML=FALSE)
+
+summary(mod3)
+r.squaredGLMM(mod3)
+check_collinearity(mod3)
+
+#plot - mod3
+dat3 = ggpredict(mod3, terms = c("Vuosi[all]","Hoito2020"))
+plot(dat3) + theme_classic()
+#ggsave('restore.png', dpi = 300)
+```
+
