@@ -1,7 +1,7 @@
 ---
 title: "Multi-species model (Total abundance)"
 author: "Yanjie Xu"
-date: '2023-08-07'
+date: '2023-08-11'
 output:
   html_document:
     keep_md: yes
@@ -26,7 +26,7 @@ library(performance)
 mod.data = read.csv('data4model3.csv')
 mod.data$NN = scale(mod.data$NNN)
 mod.data$ProtectStatus = factor(mod.data$ProtectStatus, levels=c('Non-protect', 'Protect-Non-Helmi', 'Protect-Helmi'))
-str(mod.data)
+#str(mod.data)
 ```
 
 

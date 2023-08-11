@@ -1,0 +1,89 @@
+---
+title: "singlespecies"
+author: "Yanjie Xu"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    keep_md: yes
+  pdf_document: default
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+```{r package, results = "hide"}
+library(glmmTMB)
+library(ggplot2)
+library(ggeffects)
+library (MuMIn)
+library(dplyr)
+
+```
+
+
+## The data
+```{r, eval=TRUE}
+mod.data = read.csv('data4model3.csv')
+mod.data$NN = scale(mod.data$NNN)
+mod.data$ProtectStatus = factor(mod.data$ProtectStatus, levels=c('Non-protect', 'Protect-Non-Helmi', 'Protect-Helmi'))
+
+# species list
+species = data.frame(species = colnames(mod.data[,10:45]),
+                     tcount = colSums(mod.data[,10:45],na.rm = T), 
+                     nobs = colSums(!is.na(mod.data[,10:45])))
+guild = read.csv('guilds_20230804.csv')
+species = merge(species, guild, by = 'species', all.x = T)
+
+#Select the species with over 100 counted individuals and over 5000 observations
+species = species[species$tcount>=100 & species$nobs>=5000,]
+# 21 species left
+species =
+  species %>% mutate(Guild = recode(guild_name, 
+                                       "dabbling ducks" = "Dabbling duck",
+                                       "diving omnivores" = "Diving omnivore",
+                                       "diving piscivores" = "Diving piscivore",
+                                       "herons" = "Heron",
+                                       .default = "Goose Swan")) 
+summary(as.factor(species$Guild))
+# 5 guilds
+
+splist = species$species
+splist
+```
+
+
+## 1. Test the effect of protect status on waterbird abundance and population trends
+## 2. Test the effect of restoration action before 2020 on waterbird abundance and population trends
+```{r, eval=TRUE}
+for (i in 1:length(splist)){
+mod.data1 = mod.data[!is.na(mod.data[,splist[i]]),]
+## 1. Test the effect of protect status on waterbird abundance and population trends
+mod2=glmmTMB(get(splist[i])~
+               ProtectStatus*scale(Vuosi)+
+               poly(NN,2)+
+               (1|SiteID), 
+             data=mod.data1,family = nbinom2, REML=FALSE)
+print(paste(species$Guild[i], splist[i], sep = ": "))
+print(summary(mod2))
+print(r.squaredGLMM(mod2))
+dat2 = ggpredict(mod2, terms = c("Vuosi[all]","ProtectStatus"))
+print(plot(dat2) + theme_classic() + 
+  ylab(splist[i]) + ggtitle(paste(species$Guild[i], splist[i], sep = ": ")))
+
+
+## 2. Test the effect of restoration action before 2020 on waterbird abundance and population trends
+mod.data2 = mod.data1[mod.data1$ProtectStatus!='Non-protect',]
+mod.data2$Hoito2020 = as.factor(mod.data2$Hoito2020)
+mod3=glmmTMB(get(splist[i])~Hoito2020*scale(Vuosi)+
+               poly(NN,2)+
+               (1|SiteID), 
+             data=mod.data2,family = nbinom2, REML=FALSE)
+print(paste(species$Guild[i], splist[i], sep = ": "))
+print(summary(mod3))
+print(r.squaredGLMM(mod3))
+dat3 = ggpredict(mod3, terms = c("Vuosi[all]","Hoito2020"))
+print(plot(dat3) + theme_classic()+ 
+  ylab(splist[i]) + ggtitle(paste(species$Guild[i], splist[i], sep = ": ")))
+}
+```
