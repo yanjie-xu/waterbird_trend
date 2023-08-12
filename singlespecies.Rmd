@@ -10,7 +10,7 @@ output:
 
 ```{r setup, include=FALSE} 
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.width=8, fig.height=2.667) 
-options(width = 80)
+options(width = 100)
 ```
 
 ```{r package, results = "hide"}

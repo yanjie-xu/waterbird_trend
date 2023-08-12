@@ -49,10 +49,8 @@ summary(as.factor(species$Guild))
 ```
 
 ```
-##    Dabbling duck  Diving omnivore Diving piscivore       Goose Swan 
-##                6                6                6                2 
-##            Heron 
-##                1
+##    Dabbling duck  Diving omnivore Diving piscivore       Goose Swan            Heron 
+##                6                6                6                2                1
 ```
 
 ```r
@@ -63,9 +61,9 @@ splist
 ```
 
 ```
-##  [1] "ANAACU" "ANACLY" "ANACRE" "ANAPEN" "ANAPLA" "ANAQUE" "AYTFER" "AYTFUL"
-##  [9] "BOTSTE" "BRACAN" "BUCCLA" "CYGCYG" "FULATR" "GAVARC" "MELFUS" "MERALB"
-## [17] "MERMER" "MERSER" "PODAUR" "PODCRI" "PODGRI"
+##  [1] "ANAACU" "ANACLY" "ANACRE" "ANAPEN" "ANAPLA" "ANAQUE" "AYTFER" "AYTFUL" "BOTSTE" "BRACAN"
+## [11] "BUCCLA" "CYGCYG" "FULATR" "GAVARC" "MELFUS" "MERALB" "MERMER" "MERSER" "PODAUR" "PODCRI"
+## [21] "PODGRI"
 ```
 
 
@@ -110,8 +108,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Dabbling duck: ANAACU"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -127,24 +124,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 6.37 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                  -4.8006     0.1925 -24.936
-## ProtectStatusProtect-Non-Helmi                1.9303     0.2698   7.154
-## ProtectStatusProtect-Helmi                    3.5542     0.2165  16.419
-## scale(Vuosi)                                 -0.6603     0.0869  -7.599
-## poly(NN, 2)1                                107.0746     6.4305  16.651
-## poly(NN, 2)2                                -46.4494     6.4715  -7.178
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.1841     0.1430   1.288
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.1752     0.1010   1.735
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              8.43e-13 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                2.99e-14 ***
-## poly(NN, 2)1                                 < 2e-16 ***
-## poly(NN, 2)2                                7.10e-13 ***
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.1978    
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.0827 .  
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -4.8006     0.1925 -24.936  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                1.9303     0.2698   7.154 8.43e-13 ***
+## ProtectStatusProtect-Helmi                    3.5542     0.2165  16.419  < 2e-16 ***
+## scale(Vuosi)                                 -0.6603     0.0869  -7.599 2.99e-14 ***
+## poly(NN, 2)1                                107.0746     6.4305  16.651  < 2e-16 ***
+## poly(NN, 2)2                                -46.4494     6.4715  -7.178 7.10e-13 ***
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.1841     0.1430   1.288   0.1978    
+## ProtectStatusProtect-Helmi:scale(Vuosi)       0.1752     0.1010   1.735   0.0827 .  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -153,8 +141,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.6262211 0.9792773
 ## [1] "Dabbling duck: ANAACU"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -190,8 +177,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Dabbling duck: ANACLY"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -207,24 +193,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family ():  5.8 
 ## 
 ## Conditional model:
-##                                              Estimate Std. Error z value
-## (Intercept)                                  -3.27888    0.13336 -24.587
-## ProtectStatusProtect-Non-Helmi                2.19912    0.22299   9.862
-## ProtectStatusProtect-Helmi                    3.73646    0.17359  21.525
-## scale(Vuosi)                                 -0.07786    0.06109  -1.275
-## poly(NN, 2)1                                 16.54259    4.84523   3.414
-## poly(NN, 2)2                                -11.34399    5.35839  -2.117
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.26896    0.10666  -2.522
-## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.11536    0.07013  -1.645
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi               < 2e-16 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                 0.20245    
-## poly(NN, 2)1                                 0.00064 ***
-## poly(NN, 2)2                                 0.03426 *  
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  0.01168 *  
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.10001    
+##                                              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -3.27888    0.13336 -24.587  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                2.19912    0.22299   9.862  < 2e-16 ***
+## ProtectStatusProtect-Helmi                    3.73646    0.17359  21.525  < 2e-16 ***
+## scale(Vuosi)                                 -0.07786    0.06109  -1.275  0.20245    
+## poly(NN, 2)1                                 16.54259    4.84523   3.414  0.00064 ***
+## poly(NN, 2)2                                -11.34399    5.35839  -2.117  0.03426 *  
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.26896    0.10666  -2.522  0.01168 *  
+## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.11536    0.07013  -1.645  0.10001    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -233,8 +210,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.4118460 0.9058383
 ## [1] "Dabbling duck: ANACLY"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -270,8 +246,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Dabbling duck: ANACRE"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -287,24 +262,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 2.87 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                 -0.38301    0.05579  -6.865
-## ProtectStatusProtect-Non-Helmi               1.27698    0.11987  10.653
-## ProtectStatusProtect-Helmi                   1.92384    0.09050  21.258
-## scale(Vuosi)                                -0.01699    0.03216  -0.528
-## poly(NN, 2)1                                22.49366    2.65524   8.471
-## poly(NN, 2)2                                -8.68793    2.86710  -3.030
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.08143    0.06296  -1.293
-## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.08151    0.04417  -1.845
-##                                             Pr(>|z|)    
-## (Intercept)                                 6.64e-12 ***
-## ProtectStatusProtect-Non-Helmi               < 2e-16 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                 0.59734    
-## poly(NN, 2)1                                 < 2e-16 ***
-## poly(NN, 2)2                                 0.00244 ** 
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  0.19590    
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.06501 .  
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                 -0.38301    0.05579  -6.865 6.64e-12 ***
+## ProtectStatusProtect-Non-Helmi               1.27698    0.11987  10.653  < 2e-16 ***
+## ProtectStatusProtect-Helmi                   1.92384    0.09050  21.258  < 2e-16 ***
+## scale(Vuosi)                                -0.01699    0.03216  -0.528  0.59734    
+## poly(NN, 2)1                                22.49366    2.65524   8.471  < 2e-16 ***
+## poly(NN, 2)2                                -8.68793    2.86710  -3.030  0.00244 ** 
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.08143    0.06296  -1.293  0.19590    
+## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.08151    0.04417  -1.845  0.06501 .  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -313,8 +279,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.2889236 0.7175126
 ## [1] "Dabbling duck: ANACRE"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -350,8 +315,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Dabbling duck: ANAPEN"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -367,24 +331,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 3.67 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                 -1.21163    0.07388 -16.400
-## ProtectStatusProtect-Non-Helmi               1.27494    0.15222   8.376
-## ProtectStatusProtect-Helmi                   2.17838    0.11467  18.998
-## scale(Vuosi)                                -0.21804    0.03754  -5.808
-## poly(NN, 2)1                                34.40583    3.27995  10.490
-## poly(NN, 2)2                                -2.16354    3.56564  -0.607
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.16789    0.07271  -2.309
-## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.02907    0.04970  -0.585
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi               < 2e-16 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                6.31e-09 ***
-## poly(NN, 2)1                                 < 2e-16 ***
-## poly(NN, 2)2                                  0.5440    
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.0209 *  
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.5587    
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                 -1.21163    0.07388 -16.400  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi               1.27494    0.15222   8.376  < 2e-16 ***
+## ProtectStatusProtect-Helmi                   2.17838    0.11467  18.998  < 2e-16 ***
+## scale(Vuosi)                                -0.21804    0.03754  -5.808 6.31e-09 ***
+## poly(NN, 2)1                                34.40583    3.27995  10.490  < 2e-16 ***
+## poly(NN, 2)2                                -2.16354    3.56564  -0.607   0.5440    
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.16789    0.07271  -2.309   0.0209 *  
+## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.02907    0.04970  -0.585   0.5587    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -393,8 +348,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.3128186 0.8000647
 ## [1] "Dabbling duck: ANAPEN"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -430,8 +384,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Dabbling duck: ANAPLA"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -447,24 +400,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 5.84 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                  0.12982    0.05161   2.515
-## ProtectStatusProtect-Non-Helmi               0.90723    0.11407   7.954
-## ProtectStatusProtect-Helmi                   1.63637    0.08605  19.016
-## scale(Vuosi)                                 0.06744    0.02557   2.638
-## poly(NN, 2)1                                -9.36910    2.56078  -3.659
-## poly(NN, 2)2                                 8.62069    2.76046   3.123
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.12453    0.05093  -2.445
-## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.06085    0.03482  -1.747
-##                                             Pr(>|z|)    
-## (Intercept)                                 0.011896 *  
-## ProtectStatusProtect-Non-Helmi              1.81e-15 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                0.008342 ** 
-## poly(NN, 2)1                                0.000254 ***
-## poly(NN, 2)2                                0.001791 ** 
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) 0.014477 *  
-## ProtectStatusProtect-Helmi:scale(Vuosi)     0.080592 .  
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  0.12982    0.05161   2.515 0.011896 *  
+## ProtectStatusProtect-Non-Helmi               0.90723    0.11407   7.954 1.81e-15 ***
+## ProtectStatusProtect-Helmi                   1.63637    0.08605  19.016  < 2e-16 ***
+## scale(Vuosi)                                 0.06744    0.02557   2.638 0.008342 ** 
+## poly(NN, 2)1                                -9.36910    2.56078  -3.659 0.000254 ***
+## poly(NN, 2)2                                 8.62069    2.76046   3.123 0.001791 ** 
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.12453    0.05093  -2.445 0.014477 *  
+## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.06085    0.03482  -1.747 0.080592 .  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -473,8 +417,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.2438630 0.7887769
 ## [1] "Dabbling duck: ANAPLA"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -510,8 +453,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Dabbling duck: ANAQUE"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -527,24 +469,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 7.42 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                 -4.42015    0.18278 -24.183
-## ProtectStatusProtect-Non-Helmi               1.75909    0.27625   6.368
-## ProtectStatusProtect-Helmi                   3.90965    0.21201  18.441
-## scale(Vuosi)                                -0.42327    0.09459  -4.475
-## poly(NN, 2)1                                 6.08253    5.81084   1.047
-## poly(NN, 2)2                                -9.49615    6.42083  -1.479
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.41663    0.18488  -2.254
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.02375    0.10601   0.224
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              1.92e-10 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                7.66e-06 ***
-## poly(NN, 2)1                                  0.2952    
-## poly(NN, 2)2                                  0.1392    
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.0242 *  
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.8227    
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                 -4.42015    0.18278 -24.183  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi               1.75909    0.27625   6.368 1.92e-10 ***
+## ProtectStatusProtect-Helmi                   3.90965    0.21201  18.441  < 2e-16 ***
+## scale(Vuosi)                                -0.42327    0.09459  -4.475 7.66e-06 ***
+## poly(NN, 2)1                                 6.08253    5.81084   1.047   0.2952    
+## poly(NN, 2)2                                -9.49615    6.42083  -1.479   0.1392    
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.41663    0.18488  -2.254   0.0242 *  
+## ProtectStatusProtect-Helmi:scale(Vuosi)      0.02375    0.10601   0.224   0.8227    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -553,8 +486,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.4242635 0.8768538
 ## [1] "Dabbling duck: ANAQUE"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -590,8 +522,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving omnivore: AYTFER"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -607,24 +538,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 3.43 
 ## 
 ## Conditional model:
-##                                              Estimate Std. Error z value
-## (Intercept)                                  -3.96577    0.17897 -22.159
-## ProtectStatusProtect-Non-Helmi                2.14404    0.28781   7.449
-## ProtectStatusProtect-Helmi                    3.62745    0.22155  16.373
-## scale(Vuosi)                                 -0.54939    0.07125  -7.710
-## poly(NN, 2)1                                -77.47413   12.17428  -6.364
-## poly(NN, 2)2                                -66.95381   11.15036  -6.005
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.51347    0.14520  -3.536
-## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.06348    0.08818  -0.720
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              9.38e-14 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                1.25e-14 ***
-## poly(NN, 2)1                                1.97e-10 ***
-## poly(NN, 2)2                                1.92e-09 ***
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) 0.000406 ***
-## ProtectStatusProtect-Helmi:scale(Vuosi)     0.471583    
+##                                              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -3.96577    0.17897 -22.159  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                2.14404    0.28781   7.449 9.38e-14 ***
+## ProtectStatusProtect-Helmi                    3.62745    0.22155  16.373  < 2e-16 ***
+## scale(Vuosi)                                 -0.54939    0.07125  -7.710 1.25e-14 ***
+## poly(NN, 2)1                                -77.47413   12.17428  -6.364 1.97e-10 ***
+## poly(NN, 2)2                                -66.95381   11.15036  -6.005 1.92e-09 ***
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.51347    0.14520  -3.536 0.000406 ***
+## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.06348    0.08818  -0.720 0.471583    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -633,8 +555,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.5012681 0.9361662
 ## [1] "Diving omnivore: AYTFER"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -670,8 +591,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving omnivore: AYTFUL"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -687,24 +607,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family ():  1.8 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                 -2.28337    0.11829 -19.304
-## ProtectStatusProtect-Non-Helmi               2.00831    0.21660   9.272
-## ProtectStatusProtect-Helmi                   2.68981    0.16763  16.046
-## scale(Vuosi)                                -0.42368    0.05360  -7.905
-## poly(NN, 2)1                                57.08462    4.78574  11.928
-## poly(NN, 2)2                                -7.15996    5.20041  -1.377
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.04147    0.09459  -0.438
-## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.11508    0.07064  -1.629
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi               < 2e-16 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                2.69e-15 ***
-## poly(NN, 2)1                                 < 2e-16 ***
-## poly(NN, 2)2                                   0.169    
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)    0.661    
-## ProtectStatusProtect-Helmi:scale(Vuosi)        0.103    
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                 -2.28337    0.11829 -19.304  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi               2.00831    0.21660   9.272  < 2e-16 ***
+## ProtectStatusProtect-Helmi                   2.68981    0.16763  16.046  < 2e-16 ***
+## scale(Vuosi)                                -0.42368    0.05360  -7.905 2.69e-15 ***
+## poly(NN, 2)1                                57.08462    4.78574  11.928  < 2e-16 ***
+## poly(NN, 2)2                                -7.15996    5.20041  -1.377    0.169    
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.04147    0.09459  -0.438    0.661    
+## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.11508    0.07064  -1.629    0.103    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -713,8 +624,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.3248827 0.8579604
 ## [1] "Diving omnivore: AYTFUL"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -750,8 +660,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Heron: BOTSTE"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -767,24 +676,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 3.7e+08 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                  -5.7253     0.3154 -18.151
-## ProtectStatusProtect-Non-Helmi                1.7392     0.4147   4.194
-## ProtectStatusProtect-Helmi                    4.1550     0.3142  13.223
-## scale(Vuosi)                                  1.4672     0.2205   6.654
-## poly(NN, 2)1                                -36.4668    11.1908  -3.259
-## poly(NN, 2)2                                 -8.0426    10.4570  -0.769
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.3200     0.3085  -1.037
-## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.8610     0.2354  -3.658
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              2.75e-05 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                2.85e-11 ***
-## poly(NN, 2)1                                0.001119 ** 
-## poly(NN, 2)2                                0.441829    
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) 0.299571    
-## ProtectStatusProtect-Helmi:scale(Vuosi)     0.000254 ***
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -5.7253     0.3154 -18.151  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                1.7392     0.4147   4.194 2.75e-05 ***
+## ProtectStatusProtect-Helmi                    4.1550     0.3142  13.223  < 2e-16 ***
+## scale(Vuosi)                                  1.4672     0.2205   6.654 2.85e-11 ***
+## poly(NN, 2)1                                -36.4668    11.1908  -3.259 0.001119 ** 
+## poly(NN, 2)2                                 -8.0426    10.4570  -0.769 0.441829    
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.3200     0.3085  -1.037 0.299571    
+## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.8610     0.2354  -3.658 0.000254 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -793,8 +693,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.5776253 0.9985934
 ## [1] "Heron: BOTSTE"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -830,8 +729,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Goose Swan: BRACAN"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -847,24 +745,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 9.79e+15 
 ## 
 ## Conditional model:
-##                                              Estimate Std. Error z value
-## (Intercept)                                  -6.23364        NaN     NaN
-## ProtectStatusProtect-Non-Helmi                1.50519    0.34800   4.325
-## ProtectStatusProtect-Helmi                    2.86835        NaN     NaN
-## scale(Vuosi)                                  0.98635    0.04838  20.386
-## poly(NN, 2)1                                -42.65150        NaN     NaN
-## poly(NN, 2)2                                 34.77979        NaN     NaN
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.21008    0.25315  -0.830
-## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.24814        NaN     NaN
-##                                             Pr(>|z|)    
-## (Intercept)                                      NaN    
-## ProtectStatusProtect-Non-Helmi              1.52e-05 ***
-## ProtectStatusProtect-Helmi                       NaN    
-## scale(Vuosi)                                 < 2e-16 ***
-## poly(NN, 2)1                                     NaN    
-## poly(NN, 2)2                                     NaN    
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)    0.407    
-## ProtectStatusProtect-Helmi:scale(Vuosi)          NaN    
+##                                              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -6.23364        NaN     NaN      NaN    
+## ProtectStatusProtect-Non-Helmi                1.50519    0.34800   4.325 1.52e-05 ***
+## ProtectStatusProtect-Helmi                    2.86835        NaN     NaN      NaN    
+## scale(Vuosi)                                  0.98635    0.04838  20.386  < 2e-16 ***
+## poly(NN, 2)1                                -42.65150        NaN     NaN      NaN    
+## poly(NN, 2)2                                 34.77979        NaN     NaN      NaN    
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.21008    0.25315  -0.830    0.407    
+## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.24814        NaN     NaN      NaN    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -873,8 +762,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.3227809 0.9999677
 ## [1] "Goose Swan: BRACAN"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -910,8 +798,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving omnivore: BUCCLA"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -927,24 +814,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 6.26 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                  0.33294    0.05263   6.326
-## ProtectStatusProtect-Non-Helmi               0.88578    0.11544   7.673
-## ProtectStatusProtect-Helmi                   1.12332    0.08879  12.651
-## scale(Vuosi)                                 0.08003    0.02445   3.273
-## poly(NN, 2)1                                10.14172    2.57009   3.946
-## poly(NN, 2)2                                 6.18426    2.77797   2.226
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.02570    0.04774  -0.538
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.05724    0.03521   1.626
-##                                             Pr(>|z|)    
-## (Intercept)                                 2.51e-10 ***
-## ProtectStatusProtect-Non-Helmi              1.68e-14 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                 0.00106 ** 
-## poly(NN, 2)1                                7.94e-05 ***
-## poly(NN, 2)2                                 0.02600 *  
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  0.59037    
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.10405    
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  0.33294    0.05263   6.326 2.51e-10 ***
+## ProtectStatusProtect-Non-Helmi               0.88578    0.11544   7.673 1.68e-14 ***
+## ProtectStatusProtect-Helmi                   1.12332    0.08879  12.651  < 2e-16 ***
+## scale(Vuosi)                                 0.08003    0.02445   3.273  0.00106 ** 
+## poly(NN, 2)1                                10.14172    2.57009   3.946 7.94e-05 ***
+## poly(NN, 2)2                                 6.18426    2.77797   2.226  0.02600 *  
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.02570    0.04774  -0.538  0.59037    
+## ProtectStatusProtect-Helmi:scale(Vuosi)      0.05724    0.03521   1.626  0.10405    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -953,8 +831,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.1422281 0.7801119
 ## [1] "Diving omnivore: BUCCLA"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -990,8 +867,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Goose Swan: CYGCYG"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1007,24 +883,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 1.05e+07 
 ## 
 ## Conditional model:
-##                                               Estimate Std. Error z value
-## (Intercept)                                 -2.2684665  0.0781880 -29.013
-## ProtectStatusProtect-Non-Helmi               1.0065335  0.1461228   6.888
-## ProtectStatusProtect-Helmi                   1.5938435  0.1086009  14.676
-## scale(Vuosi)                                 0.7875869  0.0580308  13.572
-## poly(NN, 2)1                                21.0441206  3.0201838   6.968
-## poly(NN, 2)2                                -8.5986343  3.2441885  -2.650
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.1830007  0.1076135  -1.701
-## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.0002503  0.0766840  -0.003
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              5.65e-12 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                 < 2e-16 ***
-## poly(NN, 2)1                                3.22e-12 ***
-## poly(NN, 2)2                                 0.00804 ** 
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  0.08903 .  
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.99740    
+##                                               Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                 -2.2684665  0.0781880 -29.013  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi               1.0065335  0.1461228   6.888 5.65e-12 ***
+## ProtectStatusProtect-Helmi                   1.5938435  0.1086009  14.676  < 2e-16 ***
+## scale(Vuosi)                                 0.7875869  0.0580308  13.572  < 2e-16 ***
+## poly(NN, 2)1                                21.0441206  3.0201838   6.968 3.22e-12 ***
+## poly(NN, 2)2                                -8.5986343  3.2441885  -2.650  0.00804 ** 
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.1830007  0.1076135  -1.701  0.08903 .  
+## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.0002503  0.0766840  -0.003  0.99740    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -1033,8 +900,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.1689905 0.3197846
 ## [1] "Goose Swan: CYGCYG"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1070,8 +936,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving omnivore: FULATR"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1087,24 +952,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 2.56 
 ## 
 ## Conditional model:
-##                                               Estimate Std. Error z value
-## (Intercept)                                  -3.712262   0.195180 -19.020
-## ProtectStatusProtect-Non-Helmi                2.842772   0.315454   9.012
-## ProtectStatusProtect-Helmi                    4.306934   0.245637  17.534
-## scale(Vuosi)                                 -0.405472   0.058288  -6.956
-## poly(NN, 2)1                                -83.522344  10.773337  -7.753
-## poly(NN, 2)2                                -28.102330  10.372630  -2.709
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.007359   0.111971   0.066
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.213473   0.071205   2.998
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi               < 2e-16 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                3.49e-12 ***
-## poly(NN, 2)1                                9.00e-15 ***
-## poly(NN, 2)2                                 0.00674 ** 
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  0.94760    
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.00272 ** 
+##                                               Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -3.712262   0.195180 -19.020  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                2.842772   0.315454   9.012  < 2e-16 ***
+## ProtectStatusProtect-Helmi                    4.306934   0.245637  17.534  < 2e-16 ***
+## scale(Vuosi)                                 -0.405472   0.058288  -6.956 3.49e-12 ***
+## poly(NN, 2)1                                -83.522344  10.773337  -7.753 9.00e-15 ***
+## poly(NN, 2)2                                -28.102330  10.372630  -2.709  0.00674 ** 
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.007359   0.111971   0.066  0.94760    
+## ProtectStatusProtect-Helmi:scale(Vuosi)       0.213473   0.071205   2.998  0.00272 ** 
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -1113,8 +969,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.4277680 0.9568018
 ## [1] "Diving omnivore: FULATR"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1150,8 +1005,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving piscivore: GAVARC"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1167,24 +1021,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 2.53e+07 
 ## 
 ## Conditional model:
-##                                              Estimate Std. Error z value
-## (Intercept)                                  -3.73761    0.19957 -18.728
-## ProtectStatusProtect-Non-Helmi               -0.57908    0.35313  -1.640
-## ProtectStatusProtect-Helmi                   -0.41365    0.30768  -1.344
-## scale(Vuosi)                                  0.32412    0.07761   4.176
-## poly(NN, 2)1                                 36.28990    6.89821   5.261
-## poly(NN, 2)2                                -14.57727    7.61574  -1.914
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.13587    0.24428  -0.556
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.21629    0.21421   1.010
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi                0.1010    
-## ProtectStatusProtect-Helmi                    0.1788    
-## scale(Vuosi)                                2.96e-05 ***
-## poly(NN, 2)1                                1.43e-07 ***
-## poly(NN, 2)2                                  0.0556 .  
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.5781    
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.3126    
+##                                              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -3.73761    0.19957 -18.728  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi               -0.57908    0.35313  -1.640   0.1010    
+## ProtectStatusProtect-Helmi                   -0.41365    0.30768  -1.344   0.1788    
+## scale(Vuosi)                                  0.32412    0.07761   4.176 2.96e-05 ***
+## poly(NN, 2)1                                 36.28990    6.89821   5.261 1.43e-07 ***
+## poly(NN, 2)2                                -14.57727    7.61574  -1.914   0.0556 .  
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.13587    0.24428  -0.556   0.5781    
+## ProtectStatusProtect-Helmi:scale(Vuosi)       0.21629    0.21421   1.010   0.3126    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                  R2m       R2c
@@ -1193,8 +1038,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.02782709 0.2891660
 ## [1] "Diving piscivore: GAVARC"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1230,8 +1074,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving omnivore: MELFUS"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1247,24 +1090,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 4.71 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                 -12.8608     1.4649  -8.779
-## ProtectStatusProtect-Non-Helmi                3.0921     1.2485   2.477
-## ProtectStatusProtect-Helmi                    5.0577     1.2662   3.994
-## scale(Vuosi)                                 -0.1034     0.5218  -0.198
-## poly(NN, 2)1                                143.3345    34.1072   4.202
-## poly(NN, 2)2                                 12.7422    27.7657   0.459
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.1980     0.5779  -0.343
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.5036     0.5899   0.854
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi                0.0133 *  
-## ProtectStatusProtect-Helmi                  6.48e-05 ***
-## scale(Vuosi)                                  0.8428    
-## poly(NN, 2)1                                2.64e-05 ***
-## poly(NN, 2)2                                  0.6463    
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.7319    
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.3932    
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                 -12.8608     1.4649  -8.779  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                3.0921     1.2485   2.477   0.0133 *  
+## ProtectStatusProtect-Helmi                    5.0577     1.2662   3.994 6.48e-05 ***
+## scale(Vuosi)                                 -0.1034     0.5218  -0.198   0.8428    
+## poly(NN, 2)1                                143.3345    34.1072   4.202 2.64e-05 ***
+## poly(NN, 2)2                                 12.7422    27.7657   0.459   0.6463    
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.1980     0.5779  -0.343   0.7319    
+## ProtectStatusProtect-Helmi:scale(Vuosi)       0.5036     0.5899   0.854   0.3932    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -1273,8 +1107,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.2261524 0.9932863
 ## [1] "Diving omnivore: MELFUS"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1310,8 +1143,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving piscivore: MERALB"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1327,24 +1159,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 8.37 
 ## 
 ## Conditional model:
-##                                              Estimate Std. Error z value
-## (Intercept)                                  -6.94913    0.38223 -18.180
-## ProtectStatusProtect-Non-Helmi                1.94302    0.38792   5.009
-## ProtectStatusProtect-Helmi                    3.03417    0.34830   8.711
-## scale(Vuosi)                                  0.15378    0.16081   0.956
-## poly(NN, 2)1                                130.11235   10.96777  11.863
-## poly(NN, 2)2                                 -8.74263    9.71343  -0.900
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.30075    0.22963  -1.310
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.03935    0.22251   0.177
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              5.48e-07 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                   0.339    
-## poly(NN, 2)1                                 < 2e-16 ***
-## poly(NN, 2)2                                   0.368    
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)    0.190    
-## ProtectStatusProtect-Helmi:scale(Vuosi)        0.860    
+##                                              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -6.94913    0.38223 -18.180  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                1.94302    0.38792   5.009 5.48e-07 ***
+## ProtectStatusProtect-Helmi                    3.03417    0.34830   8.711  < 2e-16 ***
+## scale(Vuosi)                                  0.15378    0.16081   0.956    0.339    
+## poly(NN, 2)1                                130.11235   10.96777  11.863  < 2e-16 ***
+## poly(NN, 2)2                                 -8.74263    9.71343  -0.900    0.368    
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.30075    0.22963  -1.310    0.190    
+## ProtectStatusProtect-Helmi:scale(Vuosi)       0.03935    0.22251   0.177    0.860    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -1353,8 +1176,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.5554326 0.9853429
 ## [1] "Diving piscivore: MERALB"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1390,8 +1212,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving piscivore: MERMER"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1407,24 +1228,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family ():    2 
 ## 
 ## Conditional model:
-##                                             Estimate Std. Error z value
-## (Intercept)                                 -2.41097    0.11714 -20.582
-## ProtectStatusProtect-Non-Helmi               0.60784    0.24451   2.486
-## ProtectStatusProtect-Helmi                   1.75609    0.18185   9.657
-## scale(Vuosi)                                 0.22356    0.06349   3.521
-## poly(NN, 2)1                                15.93577    4.97157   3.205
-## poly(NN, 2)2                                -4.75249    5.31527  -0.894
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.20531    0.15135  -1.357
-## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.05624    0.10584  -0.531
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              0.012921 *  
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                0.000429 ***
-## poly(NN, 2)1                                0.001349 ** 
-## poly(NN, 2)2                                0.371258    
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) 0.174927    
-## ProtectStatusProtect-Helmi:scale(Vuosi)     0.595178    
+##                                             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                 -2.41097    0.11714 -20.582  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi               0.60784    0.24451   2.486 0.012921 *  
+## ProtectStatusProtect-Helmi                   1.75609    0.18185   9.657  < 2e-16 ***
+## scale(Vuosi)                                 0.22356    0.06349   3.521 0.000429 ***
+## poly(NN, 2)1                                15.93577    4.97157   3.205 0.001349 ** 
+## poly(NN, 2)2                                -4.75249    5.31527  -0.894 0.371258    
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi) -0.20531    0.15135  -1.357 0.174927    
+## ProtectStatusProtect-Helmi:scale(Vuosi)     -0.05624    0.10584  -0.531 0.595178    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                  R2m       R2c
@@ -1433,8 +1245,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.08313361 0.5935251
 ## [1] "Diving piscivore: MERMER"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1470,8 +1281,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving piscivore: MERSER"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1487,24 +1297,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 3.51 
 ## 
 ## Conditional model:
-##                                               Estimate Std. Error z value
-## (Intercept)                                  -4.902233   0.263018 -18.638
-## ProtectStatusProtect-Non-Helmi                0.606361   0.407271   1.489
-## ProtectStatusProtect-Helmi                    2.805561   0.322307   8.705
-## scale(Vuosi)                                 -0.001167   0.088655  -0.013
-## poly(NN, 2)1                                 58.274346   8.347696   6.981
-## poly(NN, 2)2                                -23.723951   9.035115  -2.626
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.177317   0.196326  -0.903
-## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.134188   0.137756  -0.974
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi               0.13653    
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                 0.98950    
-## poly(NN, 2)1                                2.93e-12 ***
-## poly(NN, 2)2                                 0.00865 ** 
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  0.36643    
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.33000    
+##                                               Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -4.902233   0.263018 -18.638  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                0.606361   0.407271   1.489  0.13653    
+## ProtectStatusProtect-Helmi                    2.805561   0.322307   8.705  < 2e-16 ***
+## scale(Vuosi)                                 -0.001167   0.088655  -0.013  0.98950    
+## poly(NN, 2)1                                 58.274346   8.347696   6.981 2.93e-12 ***
+## poly(NN, 2)2                                -23.723951   9.035115  -2.626  0.00865 ** 
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.177317   0.196326  -0.903  0.36643    
+## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.134188   0.137756  -0.974  0.33000    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -1513,8 +1314,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.1818767 0.9687778
 ## [1] "Diving piscivore: MERSER"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1550,8 +1350,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving omnivore: PODAUR"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1567,24 +1366,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 6.01 
 ## 
 ## Conditional model:
-##                                              Estimate Std. Error z value
-## (Intercept)                                  -5.77764    0.31134 -18.557
-## ProtectStatusProtect-Non-Helmi                1.98785    0.41837   4.751
-## ProtectStatusProtect-Helmi                    3.49562    0.35474   9.854
-## scale(Vuosi)                                 -0.39816    0.09888  -4.027
-## poly(NN, 2)1                                 12.14112    9.56751   1.269
-## poly(NN, 2)2                                -23.85253   10.52217  -2.267
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.09336    0.19083  -0.489
-## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.16510    0.12651  -1.305
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              2.02e-06 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                5.66e-05 ***
-## poly(NN, 2)1                                  0.2044    
-## poly(NN, 2)2                                  0.0234 *  
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)   0.6247    
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.1919    
+##                                              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -5.77764    0.31134 -18.557  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                1.98785    0.41837   4.751 2.02e-06 ***
+## ProtectStatusProtect-Helmi                    3.49562    0.35474   9.854  < 2e-16 ***
+## scale(Vuosi)                                 -0.39816    0.09888  -4.027 5.66e-05 ***
+## poly(NN, 2)1                                 12.14112    9.56751   1.269   0.2044    
+## poly(NN, 2)2                                -23.85253   10.52217  -2.267   0.0234 *  
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.09336    0.19083  -0.489   0.6247    
+## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.16510    0.12651  -1.305   0.1919    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -1593,8 +1383,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.1976018 0.9847805
 ## [1] "Diving omnivore: PODAUR"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1630,8 +1419,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving piscivore: PODCRI"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1647,24 +1435,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family (): 4.97 
 ## 
 ## Conditional model:
-##                                              Estimate Std. Error z value
-## (Intercept)                                  -1.60921    0.12306 -13.077
-## ProtectStatusProtect-Non-Helmi                1.74506    0.25313   6.894
-## ProtectStatusProtect-Helmi                    2.58129    0.19269  13.396
-## scale(Vuosi)                                 -0.14837    0.03407  -4.355
-## poly(NN, 2)1                                -53.44862    6.53226  -8.182
-## poly(NN, 2)2                                -17.87806    6.88011  -2.599
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.07451    0.06969  -1.069
-## ProtectStatusProtect-Helmi:scale(Vuosi)       0.05076    0.04469   1.136
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              5.42e-12 ***
-## ProtectStatusProtect-Helmi                   < 2e-16 ***
-## scale(Vuosi)                                1.33e-05 ***
-## poly(NN, 2)1                                2.79e-16 ***
-## poly(NN, 2)2                                 0.00936 ** 
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  0.28498    
-## ProtectStatusProtect-Helmi:scale(Vuosi)      0.25602    
+##                                              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -1.60921    0.12306 -13.077  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                1.74506    0.25313   6.894 5.42e-12 ***
+## ProtectStatusProtect-Helmi                    2.58129    0.19269  13.396  < 2e-16 ***
+## scale(Vuosi)                                 -0.14837    0.03407  -4.355 1.33e-05 ***
+## poly(NN, 2)1                                -53.44862    6.53226  -8.182 2.79e-16 ***
+## poly(NN, 2)2                                -17.87806    6.88011  -2.599  0.00936 ** 
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.07451    0.06969  -1.069  0.28498    
+## ProtectStatusProtect-Helmi:scale(Vuosi)       0.05076    0.04469   1.136  0.25602    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -1673,8 +1452,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.2559130 0.9577560
 ## [1] "Diving piscivore: PODCRI"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1710,8 +1488,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ```
 ## [1] "Diving piscivore: PODGRI"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
+## Formula:          get(splist[i]) ~ ProtectStatus * scale(Vuosi) + poly(NN, 2) +      (1 | SiteID)
 ## Data: mod.data1
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
@@ -1727,24 +1504,15 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Dispersion parameter for nbinom2 family ():  7.1 
 ## 
 ## Conditional model:
-##                                              Estimate Std. Error z value
-## (Intercept)                                  -4.58335    0.25955 -17.659
-## ProtectStatusProtect-Non-Helmi                0.91031    0.37363   2.436
-## ProtectStatusProtect-Helmi                    1.20683    0.27871   4.330
-## scale(Vuosi)                                  0.09146    0.06044   1.513
-## poly(NN, 2)1                                -35.87274   11.33973  -3.163
-## poly(NN, 2)2                                -68.59487   12.29395  -5.580
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.49468    0.13070  -3.785
-## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.26463    0.08354  -3.168
-##                                             Pr(>|z|)    
-## (Intercept)                                  < 2e-16 ***
-## ProtectStatusProtect-Non-Helmi              0.014834 *  
-## ProtectStatusProtect-Helmi                  1.49e-05 ***
-## scale(Vuosi)                                0.130186    
-## poly(NN, 2)1                                0.001559 ** 
-## poly(NN, 2)2                                2.41e-08 ***
-## ProtectStatusProtect-Non-Helmi:scale(Vuosi) 0.000154 ***
-## ProtectStatusProtect-Helmi:scale(Vuosi)     0.001536 ** 
+##                                              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                                  -4.58335    0.25955 -17.659  < 2e-16 ***
+## ProtectStatusProtect-Non-Helmi                0.91031    0.37363   2.436 0.014834 *  
+## ProtectStatusProtect-Helmi                    1.20683    0.27871   4.330 1.49e-05 ***
+## scale(Vuosi)                                  0.09146    0.06044   1.513 0.130186    
+## poly(NN, 2)1                                -35.87274   11.33973  -3.163 0.001559 ** 
+## poly(NN, 2)2                                -68.59487   12.29395  -5.580 2.41e-08 ***
+## ProtectStatusProtect-Non-Helmi:scale(Vuosi)  -0.49468    0.13070  -3.785 0.000154 ***
+## ProtectStatusProtect-Helmi:scale(Vuosi)      -0.26463    0.08354  -3.168 0.001536 ** 
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
@@ -1753,8 +1521,7 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## trigamma  0.1169262 0.9754464
 ## [1] "Diving piscivore: PODGRI"
 ##  Family: nbinom2  ( log )
-## Formula:          
-## get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
+## Formula:          get(splist[i]) ~ Hoito2020 * scale(Vuosi) + poly(NN, 2) + (1 |      SiteID)
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
