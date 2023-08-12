@@ -1,7 +1,7 @@
 ---
 title: "singlespecies"
 author: "Yanjie Xu"
-date: "2023-08-11"
+date: "2023-08-12"
 output:
   html_document:
     keep_md: yes
@@ -17,6 +17,7 @@ library(ggplot2)
 library(ggeffects)
 library (MuMIn)
 library(dplyr)
+library(cowplot)
 ```
 
 
@@ -84,8 +85,8 @@ print(paste(species$Guild[i], splist[i], sep = ": "))
 print(summary(mod2))
 print(r.squaredGLMM(mod2))
 dat2 = ggpredict(mod2, terms = c("Vuosi[all]","ProtectStatus"))
-print(plot(dat2) + theme_classic() + 
-  ylab(splist[i]) + ggtitle(paste(species$Guild[i], splist[i], sep = ": ")))
+p1 = plot(dat2) + theme_classic() + 
+  ylab(splist[i]) + ggtitle(paste(species$Guild[i], splist[i], sep = ": "))
 
 
 ## 2. Test the effect of restoration action before 2020 on waterbird abundance and population trends
@@ -99,8 +100,10 @@ print(paste(species$Guild[i], splist[i], sep = ": "))
 print(summary(mod3))
 print(r.squaredGLMM(mod3))
 dat3 = ggpredict(mod3, terms = c("Vuosi[all]","Hoito2020"))
-print(plot(dat3) + theme_classic()+ 
-  ylab(splist[i]) + ggtitle(paste(species$Guild[i], splist[i], sep = ": ")))
+p2 = plot(dat3) + theme_classic()+ 
+  ylab(splist[i]) + ggtitle("")
+
+print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 }
 ```
 
@@ -148,11 +151,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.6272618 0.9809046
 ## lognormal 0.6281545 0.9823007
 ## trigamma  0.6262211 0.9792773
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
-
-```
 ## [1] "Dabbling duck: ANAACU"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -187,7 +185,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.6217695 0.9410335
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 ```
 ## [1] "Dabbling duck: ANACLY"
@@ -233,11 +231,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.4202341 0.9242876
 ## lognormal 0.4260290 0.9370332
 ## trigamma  0.4118460 0.9058383
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
-
-```
 ## [1] "Dabbling duck: ANACLY"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -272,7 +265,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.2169250 0.8191882
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-4.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
 
 ```
 ## [1] "Dabbling duck: ANACRE"
@@ -318,11 +311,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.3115986 0.7738237
 ## lognormal 0.3273655 0.8129792
 ## trigamma  0.2889236 0.7175126
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-5.png)<!-- -->
-
-```
 ## [1] "Dabbling duck: ANACRE"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -357,7 +345,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.1442620 0.6963738
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-6.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
 
 ```
 ## [1] "Dabbling duck: ANAPEN"
@@ -403,11 +391,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.3291757 0.8418996
 ## lognormal 0.3402804 0.8703011
 ## trigamma  0.3128186 0.8000647
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-7.png)<!-- -->
-
-```
 ## [1] "Dabbling duck: ANAPEN"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -442,7 +425,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.2441604 0.8052150
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-8.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-4.png)<!-- -->
 
 ```
 ## [1] "Dabbling duck: ANAPLA"
@@ -488,11 +471,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.2531847 0.8189280
 ## lognormal 0.2603112 0.8419789
 ## trigamma  0.2438630 0.7887769
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-9.png)<!-- -->
-
-```
 ## [1] "Dabbling duck: ANAPLA"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -527,7 +505,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.06483364 0.8162519
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-10.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-5.png)<!-- -->
 
 ```
 ## [1] "Dabbling duck: ANAQUE"
@@ -573,11 +551,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.4387070 0.9067053
 ## lognormal 0.4478967 0.9256983
 ## trigamma  0.4242635 0.8768538
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-11.png)<!-- -->
-
-```
 ## [1] "Dabbling duck: ANAQUE"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -612,7 +585,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.2842277 0.6627560
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-12.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-6.png)<!-- -->
 
 ```
 ## [1] "Diving omnivore: AYTFER"
@@ -658,11 +631,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.5082412 0.9491891
 ## lognormal 0.5129810 0.9580410
 ## trigamma  0.5012681 0.9361662
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-13.png)<!-- -->
-
-```
 ## [1] "Diving omnivore: AYTFER"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -697,7 +665,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.4097458 0.8661871
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-14.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-7.png)<!-- -->
 
 ```
 ## [1] "Diving omnivore: AYTFUL"
@@ -743,11 +711,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.3392623 0.8959344
 ## lognormal 0.3480236 0.9190716
 ## trigamma  0.3248827 0.8579604
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-15.png)<!-- -->
-
-```
 ## [1] "Diving omnivore: AYTFUL"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -782,7 +745,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.2407616 0.7857066
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-16.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-8.png)<!-- -->
 
 ```
 ## [1] "Heron: BOTSTE"
@@ -828,11 +791,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.5776299 0.9986015
 ## lognormal 0.5776345 0.9986095
 ## trigamma  0.5776253 0.9985934
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-17.png)<!-- -->
-
-```
 ## [1] "Heron: BOTSTE"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -867,7 +825,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.1679508 0.6563143
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-18.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-9.png)<!-- -->
 
 ```
 ## [1] "Goose Swan: BRACAN"
@@ -913,11 +871,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.3227809 0.9999677
 ## lognormal 0.3227809 0.9999677
 ## trigamma  0.3227809 0.9999677
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-19.png)<!-- -->
-
-```
 ## [1] "Goose Swan: BRACAN"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -952,7 +905,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.1391615 0.7416491
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-20.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-10.png)<!-- -->
 
 ```
 ## [1] "Diving omnivore: BUCCLA"
@@ -998,11 +951,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.1476950 0.8100977
 ## lognormal 0.1519241 0.8332941
 ## trigamma  0.1422281 0.7801119
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-21.png)<!-- -->
-
-```
 ## [1] "Diving omnivore: BUCCLA"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1037,7 +985,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.03083182 0.7942223
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-22.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-11.png)<!-- -->
 
 ```
 ## [1] "Goose Swan: CYGCYG"
@@ -1083,11 +1031,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.2769783 0.5241325
 ## lognormal 0.3491905 0.6607813
 ## trigamma  0.1689905 0.3197846
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-23.png)<!-- -->
-
-```
 ## [1] "Goose Swan: CYGCYG"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1122,7 +1065,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.2165782 0.4600246
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-24.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-12.png)<!-- -->
 
 ```
 ## [1] "Diving omnivore: FULATR"
@@ -1168,11 +1111,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.4313473 0.9648079
 ## lognormal 0.4338629 0.9704345
 ## trigamma  0.4277680 0.9568018
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-25.png)<!-- -->
-
-```
 ## [1] "Diving omnivore: FULATR"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1207,7 +1145,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.2813256 0.8733113
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-26.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-13.png)<!-- -->
 
 ```
 ## [1] "Diving piscivore: GAVARC"
@@ -1253,11 +1191,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.05801700 0.6028853
 ## lognormal 0.07476117 0.7768827
 ## trigamma  0.02782709 0.2891660
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-27.png)<!-- -->
-
-```
 ## [1] "Diving piscivore: GAVARC"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1292,7 +1225,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.1356887 0.9970977
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-28.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-14.png)<!-- -->
 
 ```
 ## [1] "Diving omnivore: MELFUS"
@@ -1338,11 +1271,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.2263073 0.9939667
 ## lognormal 0.2264345 0.9945255
 ## trigamma  0.2261524 0.9932863
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-29.png)<!-- -->
-
-```
 ## [1] "Diving omnivore: MELFUS"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1377,7 +1305,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.2810662 0.9862664
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-30.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-15.png)<!-- -->
 
 ```
 ## [1] "Diving piscivore: MERALB"
@@ -1423,11 +1351,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.5559092 0.9861884
 ## lognormal 0.5563348 0.9869434
 ## trigamma  0.5554326 0.9853429
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-31.png)<!-- -->
-
-```
 ## [1] "Diving piscivore: MERALB"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1462,7 +1385,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.5604483 0.9867503
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-32.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-16.png)<!-- -->
 
 ```
 ## [1] "Diving piscivore: MERMER"
@@ -1508,11 +1431,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.10361037 0.7397171
 ## lognormal 0.11471986 0.8190323
 ## trigamma  0.08313361 0.5935251
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-33.png)<!-- -->
-
-```
 ## [1] "Diving piscivore: MERMER"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1547,7 +1465,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.1026100 0.8221263
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-34.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-17.png)<!-- -->
 
 ```
 ## [1] "Diving piscivore: MERSER"
@@ -1593,11 +1511,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.1826705 0.9730064
 ## lognormal 0.1832823 0.9762650
 ## trigamma  0.1818767 0.9687778
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-35.png)<!-- -->
-
-```
 ## [1] "Diving piscivore: MERSER"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1632,7 +1545,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.3221093 0.9728956
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-36.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-18.png)<!-- -->
 
 ```
 ## [1] "Diving omnivore: PODAUR"
@@ -1678,11 +1591,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.1978483 0.9860091
 ## lognormal 0.1980589 0.9870586
 ## trigamma  0.1976018 0.9847805
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-37.png)<!-- -->
-
-```
 ## [1] "Diving omnivore: PODAUR"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1717,7 +1625,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.1897265 0.7489296
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-38.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-19.png)<!-- -->
 
 ```
 ## [1] "Diving piscivore: PODCRI"
@@ -1763,11 +1671,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.2573166 0.9630090
 ## lognormal 0.2584211 0.9671428
 ## trigamma  0.2559130 0.9577560
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-39.png)<!-- -->
-
-```
 ## [1] "Diving piscivore: PODCRI"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1802,7 +1705,7 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.09806682 0.9350786
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-40.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-20.png)<!-- -->
 
 ```
 ## [1] "Diving piscivore: PODGRI"
@@ -1848,11 +1751,6 @@ print(plot(dat3) + theme_classic()+
 ## delta     0.1172654 0.9782758
 ## lognormal 0.1175368 0.9805400
 ## trigamma  0.1169262 0.9754464
-```
-
-![](singlespecies_files/figure-html/unnamed-chunk-2-41.png)<!-- -->
-
-```
 ## [1] "Diving piscivore: PODGRI"
 ##  Family: nbinom2  ( log )
 ## Formula:          
@@ -1887,4 +1785,4 @@ print(plot(dat3) + theme_classic()+
 ## trigamma  0.1047201 0.9814072
 ```
 
-![](singlespecies_files/figure-html/unnamed-chunk-2-42.png)<!-- -->
+![](singlespecies_files/figure-html/unnamed-chunk-2-21.png)<!-- -->

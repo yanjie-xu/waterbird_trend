@@ -9,7 +9,8 @@ output:
 ---
 
 ```{r setup, include=FALSE} 
-knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.width=8, fig.height=2.667) 
+options(width = 80)
 ```
 
 ```{r package, results = "hide"}
@@ -18,6 +19,7 @@ library(ggplot2)
 library(ggeffects)
 library (MuMIn)
 library(dplyr)
+library(cowplot)
 
 ```
 
@@ -68,8 +70,8 @@ print(paste(species$Guild[i], splist[i], sep = ": "))
 print(summary(mod2))
 print(r.squaredGLMM(mod2))
 dat2 = ggpredict(mod2, terms = c("Vuosi[all]","ProtectStatus"))
-print(plot(dat2) + theme_classic() + 
-  ylab(splist[i]) + ggtitle(paste(species$Guild[i], splist[i], sep = ": ")))
+p1 = plot(dat2) + theme_classic() + 
+  ylab(splist[i]) + ggtitle(paste(species$Guild[i], splist[i], sep = ": "))
 
 
 ## 2. Test the effect of restoration action before 2020 on waterbird abundance and population trends
@@ -83,7 +85,9 @@ print(paste(species$Guild[i], splist[i], sep = ": "))
 print(summary(mod3))
 print(r.squaredGLMM(mod3))
 dat3 = ggpredict(mod3, terms = c("Vuosi[all]","Hoito2020"))
-print(plot(dat3) + theme_classic()+ 
-  ylab(splist[i]) + ggtitle(paste(species$Guild[i], splist[i], sep = ": ")))
+p2 = plot(dat3) + theme_classic()+ 
+  ylab(splist[i]) + ggtitle("")
+
+print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 }
 ```
