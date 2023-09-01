@@ -75,7 +75,7 @@ p1 = plot(dat2) + theme_classic() +
 
 
 ## 2. Test the effect of restoration action before 2020 on waterbird abundance and population trends
-mod.data2 = mod.data1[mod.data1$ProtectStatus!='Non-protect',]
+mod.data2 = mod.data1[mod.data1$ProtectStatus=='Protect-Helmi',]
 mod.data2$Hoito2020 = as.factor(mod.data2$Hoito2020)
 mod3=glmmTMB(get(splist[i])~Hoito2020*scale(Vuosi)+
                poly(NN,2)+

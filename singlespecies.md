@@ -1,7 +1,7 @@
 ---
 title: "singlespecies"
 author: "Yanjie Xu"
-date: "2023-08-12"
+date: "2023-09-01"
 output:
   html_document:
     keep_md: yes
@@ -88,7 +88,7 @@ p1 = plot(dat2) + theme_classic() +
 
 
 ## 2. Test the effect of restoration action before 2020 on waterbird abundance and population trends
-mod.data2 = mod.data1[mod.data1$ProtectStatus!='Non-protect',]
+mod.data2 = mod.data1[mod.data1$ProtectStatus=='Protect-Helmi',]
 mod.data2$Hoito2020 = as.factor(mod.data2$Hoito2020)
 mod3=glmmTMB(get(splist[i])~Hoito2020*scale(Vuosi)+
                poly(NN,2)+
@@ -145,31 +145,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   3448.5   3491.7  -1716.2   3432.5     1630 
+##   2782.3   2821.8  -1383.1   2766.3     1025 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 2.028    1.424   
-## Number of obs: 1638, groups:  SiteID, 325
+##  SiteID (Intercept) 1.836    1.355   
+## Number of obs: 1033, groups:  SiteID, 203
 ## 
-## Dispersion parameter for nbinom2 family (): 8.29 
+## Dispersion parameter for nbinom2 family (): 8.77 
 ## 
 ## Conditional model:
-##                          Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -2.04233    0.17045 -11.982  < 2e-16 ***
-## Hoito20201                1.37935    0.20921   6.593 4.30e-11 ***
-## scale(Vuosi)             -0.45738    0.08008  -5.711 1.12e-08 ***
-## poly(NN, 2)1             58.97876    4.29003  13.748  < 2e-16 ***
-## poly(NN, 2)2            -23.32815    3.78742  -6.159 7.30e-10 ***
-## Hoito20201:scale(Vuosi)  -0.03389    0.09552  -0.355    0.723    
+##                         Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)              -1.1224     0.2123  -5.288 1.24e-07 ***
+## Hoito20201                0.8275     0.2490   3.324 0.000888 ***
+## scale(Vuosi)             -0.3467     0.1104  -3.142 0.001681 ** 
+## poly(NN, 2)1             41.4633     3.9257  10.562  < 2e-16 ***
+## poly(NN, 2)2            -19.1556     3.7317  -5.133 2.85e-07 ***
+## Hoito20201:scale(Vuosi)  -0.1126     0.1209  -0.931 0.351732    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.6273024 0.9494075
-## lognormal 0.6315171 0.9557863
-## trigamma  0.6217695 0.9410335
+## delta     0.5504401 0.9308157
+## lognormal 0.5557145 0.9397348
+## trigamma  0.5434759 0.9190389
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
@@ -214,31 +214,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   6283.9   6328.0  -3133.9   6267.9     1821 
+##   4977.0   5017.9  -2480.5   4961.0     1221 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 1.802    1.342   
-## Number of obs: 1829, groups:  SiteID, 363
+##  SiteID (Intercept) 1.293    1.137   
+## Number of obs: 1229, groups:  SiteID, 242
 ## 
-## Dispersion parameter for nbinom2 family (): 6.74 
+## Dispersion parameter for nbinom2 family (): 7.39 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)             -0.43010    0.11538  -3.728 0.000193 ***
-## Hoito20201               1.23408    0.16467   7.494 6.67e-14 ***
-## scale(Vuosi)            -0.34777    0.05317  -6.540 6.14e-11 ***
-## poly(NN, 2)1             7.81554    3.10168   2.520 0.011743 *  
-## poly(NN, 2)2            -8.47529    3.20183  -2.647 0.008121 ** 
-## Hoito20201:scale(Vuosi)  0.20898    0.06445   3.243 0.001185 ** 
+## (Intercept)              0.20483    0.13945   1.469   0.1419    
+## Hoito20201               0.71639    0.17331   4.133 3.57e-05 ***
+## scale(Vuosi)            -0.29897    0.06491  -4.606 4.10e-06 ***
+## poly(NN, 2)1             5.81312    2.66691   2.180   0.0293 *  
+## poly(NN, 2)2            -6.59727    2.82961  -2.332   0.0197 *  
+## Hoito20201:scale(Vuosi)  0.17577    0.07319   2.402   0.0163 *  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.2249865 0.8496312
-## lognormal 0.2308649 0.8718303
-## trigamma  0.2169250 0.8191882
+## delta     0.1330287 0.7988986
+## lognormal 0.1373325 0.8247447
+## trigamma  0.1273915 0.7650448
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
@@ -283,31 +283,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##  10552.5  10597.4  -5268.3  10536.5     2011 
+##   7644.6   7686.4  -3814.3   7628.6     1359 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 0.9637   0.9817  
-## Number of obs: 2019, groups:  SiteID, 419
+##  SiteID (Intercept) 0.928    0.9633  
+## Number of obs: 1367, groups:  SiteID, 281
 ## 
-## Dispersion parameter for nbinom2 family (): 3.45 
+## Dispersion parameter for nbinom2 family (): 3.78 
 ## 
 ## Conditional model:
-##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              1.09486    0.07283  15.033  < 2e-16 ***
-## Hoito20201               0.59003    0.11106   5.313 1.08e-07 ***
-## scale(Vuosi)            -0.04307    0.03462  -1.244  0.21348    
-## poly(NN, 2)1            13.70837    2.18506   6.274 3.53e-10 ***
-## poly(NN, 2)2            -6.05284    2.19028  -2.764  0.00572 ** 
-## Hoito20201:scale(Vuosi) -0.11422    0.04823  -2.368  0.01788 *  
+##                          Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)              1.380171   0.102631  13.448  < 2e-16 ***
+## Hoito20201               0.357477   0.132452   2.699  0.00696 ** 
+## scale(Vuosi)            -0.005924   0.044536  -0.133  0.89418    
+## poly(NN, 2)1             8.843901   2.217577   3.988 6.66e-05 ***
+## poly(NN, 2)2            -7.045724   2.327217  -3.028  0.00247 ** 
+## Hoito20201:scale(Vuosi) -0.133694   0.054554  -2.451  0.01426 *  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.1533523 0.7402543
-## lognormal 0.1603115 0.7738470
-## trigamma  0.1442620 0.6963738
+## delta     0.1100136 0.7398099
+## lognormal 0.1145904 0.7705873
+## trigamma  0.1041717 0.7005252
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
@@ -352,31 +352,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   8560.1   8604.8  -4272.1   8544.1     1956 
+##   6356.8   6398.3  -3170.4   6340.8     1312 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 1.341    1.158   
-## Number of obs: 1964, groups:  SiteID, 401
+##  SiteID (Intercept) 1.34     1.157   
+## Number of obs: 1320, groups:  SiteID, 269
 ## 
-## Dispersion parameter for nbinom2 family (): 4.76 
+## Dispersion parameter for nbinom2 family (): 5.15 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              0.35094    0.08962   3.916 9.01e-05 ***
-## Hoito20201               0.88006    0.13328   6.603 4.03e-11 ***
-## scale(Vuosi)            -0.25036    0.03943  -6.349 2.17e-10 ***
-## poly(NN, 2)1            20.65670    2.58214   8.000 1.25e-15 ***
-## poly(NN, 2)2            -4.71503    2.56403  -1.839   0.0659 .  
-## Hoito20201:scale(Vuosi) -0.04218    0.05220  -0.808   0.4191    
+## (Intercept)              0.70503    0.12772   5.520 3.39e-08 ***
+## Hoito20201               0.58097    0.16256   3.574 0.000352 ***
+## scale(Vuosi)            -0.15123    0.05052  -2.993 0.002759 ** 
+## poly(NN, 2)1            12.11725    2.63758   4.594 4.35e-06 ***
+## poly(NN, 2)2            -5.06224    2.70490  -1.872 0.061275 .  
+## Hoito20201:scale(Vuosi) -0.10930    0.05995  -1.823 0.068274 .  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.2528907 0.8340066
-## lognormal 0.2595002 0.8558040
-## trigamma  0.2441604 0.8052150
+## delta     0.1475292 0.8230597
+## lognormal 0.1513550 0.8444040
+## trigamma  0.1425964 0.7955400
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-4.png)<!-- -->
@@ -421,31 +421,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##  11011.2  11056.1  -5497.6  10995.2     2033 
+##   7953.2   7995.1  -3968.6   7937.2     1375 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 1.216    1.103   
-## Number of obs: 2041, groups:  SiteID, 418
+##  SiteID (Intercept) 1.252    1.119   
+## Number of obs: 1383, groups:  SiteID, 280
 ## 
-## Dispersion parameter for nbinom2 family (): 6.86 
+## Dispersion parameter for nbinom2 family (): 7.08 
 ## 
 ## Conditional model:
-##                          Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              1.256987   0.077755  16.166  < 2e-16 ***
-## Hoito20201               0.653460   0.119651   5.461 4.72e-08 ***
-## scale(Vuosi)            -0.005975   0.028336  -0.211   0.8330    
-## poly(NN, 2)1            -5.014861   2.371627  -2.115   0.0345 *  
-## poly(NN, 2)2             1.731593   2.399823   0.722   0.4706    
-## Hoito20201:scale(Vuosi) -0.014066   0.038933  -0.361   0.7179    
+##                         Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)              1.50402    0.11388  13.207  < 2e-16 ***
+## Hoito20201               0.42706    0.14765   2.892  0.00382 ** 
+## scale(Vuosi)             0.02775    0.03617   0.767  0.44286    
+## poly(NN, 2)1            -7.36940    2.48708  -2.963  0.00305 ** 
+## poly(NN, 2)2             0.94360    2.57634   0.366  0.71417    
+## Hoito20201:scale(Vuosi) -0.04215    0.04430  -0.952  0.34130    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                  R2m       R2c
-## delta     0.06634427 0.8352708
-## lognormal 0.06758350 0.8508726
-## trigamma  0.06483364 0.8162519
+## delta     0.04314544 0.8500218
+## lognormal 0.04380894 0.8630935
+## trigamma  0.04234949 0.8343405
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-5.png)<!-- -->
@@ -490,31 +490,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   3742.8   3786.3  -1863.4   3726.8     1697 
+##   3174.2   3214.4  -1579.1   3158.2     1117 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 1.548    1.244   
-## Number of obs: 1705, groups:  SiteID, 331
+##  SiteID (Intercept) 1.191    1.091   
+## Number of obs: 1125, groups:  SiteID, 219
 ## 
-## Dispersion parameter for nbinom2 family (): 7.82 
+## Dispersion parameter for nbinom2 family (): 7.29 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)             -1.62555    0.13748 -11.824  < 2e-16 ***
-## Hoito20201               1.57550    0.18074   8.717  < 2e-16 ***
-## scale(Vuosi)            -0.58280    0.08894  -6.552 5.66e-11 ***
-## poly(NN, 2)1             6.29191    3.31302   1.899  0.05754 .  
-## poly(NN, 2)2            -9.66321    3.50554  -2.757  0.00584 ** 
-## Hoito20201:scale(Vuosi)  0.18362    0.10214   1.798  0.07222 .  
+## (Intercept)             -0.81649    0.16472  -4.957 7.17e-07 ***
+## Hoito20201               0.93999    0.19732   4.764 1.90e-06 ***
+## scale(Vuosi)            -0.32557    0.10526  -3.093  0.00198 ** 
+## poly(NN, 2)1             4.38388    2.83079   1.549  0.12147    
+## poly(NN, 2)2            -7.19614    3.08004  -2.336  0.01947 *  
+## Hoito20201:scale(Vuosi) -0.04256    0.11554  -0.368  0.71264    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.3233149 0.7538987
-## lognormal 0.3475831 0.8104868
-## trigamma  0.2842277 0.6627560
+## delta     0.1897440 0.6850177
+## lognormal 0.2063517 0.7449755
+## trigamma  0.1654614 0.5973524
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-6.png)<!-- -->
@@ -559,31 +559,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   5000.5   5043.8  -2492.3   4984.5     1647 
+##   3874.2   3914.0  -1929.1   3858.2     1066 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 2.443    1.563   
-## Number of obs: 1655, groups:  SiteID, 309
+##  SiteID (Intercept) 1.976    1.406   
+## Number of obs: 1074, groups:  SiteID, 202
 ## 
-## Dispersion parameter for nbinom2 family (): 3.92 
+## Dispersion parameter for nbinom2 family (): 3.91 
 ## 
 ## Conditional model:
 ##                          Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -0.97129    0.15320  -6.340 2.29e-10 ***
-## Hoito20201                1.05579    0.21853   4.831 1.36e-06 ***
-## scale(Vuosi)             -0.86863    0.07039 -12.340  < 2e-16 ***
-## poly(NN, 2)1            -24.40045    5.06841  -4.814 1.48e-06 ***
-## poly(NN, 2)2            -38.26657    5.87396  -6.515 7.29e-11 ***
-## Hoito20201:scale(Vuosi)   0.35153    0.09214   3.815 0.000136 ***
+## (Intercept)              -0.20736    0.19375  -1.070   0.2845    
+## Hoito20201                0.54145    0.24185   2.239   0.0252 *  
+## scale(Vuosi)             -0.69197    0.08222  -8.416  < 2e-16 ***
+## poly(NN, 2)1            -16.43726    3.99158  -4.118 3.82e-05 ***
+## poly(NN, 2)2            -24.90909    4.62247  -5.389 7.10e-08 ***
+## Hoito20201:scale(Vuosi)   0.21735    0.09936   2.187   0.0287 *  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.4234279 0.8951104
-## lognormal 0.4325611 0.9144178
-## trigamma  0.4097458 0.8661871
+## delta     0.3560498 0.8642500
+## lognormal 0.3658350 0.8880017
+## trigamma  0.3417502 0.8295401
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-7.png)<!-- -->
@@ -628,31 +628,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   8581.8   8626.8  -4282.9   8565.8     2052 
+##   6163.5   6205.4  -3073.7   6147.5     1390 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 2.362    1.537   
-## Number of obs: 2060, groups:  SiteID, 422
+##  SiteID (Intercept) 2.332    1.527   
+## Number of obs: 1398, groups:  SiteID, 283
 ## 
-## Dispersion parameter for nbinom2 family (): 1.88 
+## Dispersion parameter for nbinom2 family (): 1.89 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              0.04748    0.11810   0.402 0.687649    
-## Hoito20201               0.65078    0.17494   3.720 0.000199 ***
-## scale(Vuosi)            -0.46935    0.05259  -8.925  < 2e-16 ***
-## poly(NN, 2)1            34.99851    3.49157  10.024  < 2e-16 ***
-## poly(NN, 2)2            -5.84446    3.46401  -1.687 0.091566 .  
-## Hoito20201:scale(Vuosi) -0.04618    0.07405  -0.624 0.532845    
+## (Intercept)              0.24318    0.16600   1.465  0.14295    
+## Hoito20201               0.54828    0.21146   2.593  0.00952 ** 
+## scale(Vuosi)            -0.47846    0.07182  -6.662 2.71e-11 ***
+## poly(NN, 2)1            23.99113    3.54649   6.765 1.34e-11 ***
+## poly(NN, 2)2             2.41969    3.66293   0.661  0.50888    
+## Hoito20201:scale(Vuosi) -0.01159    0.08779  -0.132  0.89494    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.2564642 0.8369509
-## lognormal 0.2665908 0.8699984
-## trigamma  0.2407616 0.7857066
+## delta     0.1877293 0.8208190
+## lognormal 0.1958765 0.8564416
+## trigamma  0.1752419 0.7662197
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-8.png)<!-- -->
@@ -697,31 +697,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   1881.0   1924.2   -932.5   1865.0     1624 
+##   1481.9   1521.7   -733.0   1465.9     1054 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 2.821    1.68    
-## Number of obs: 1632, groups:  SiteID, 316
+##  SiteID (Intercept) 2.306    1.518   
+## Number of obs: 1062, groups:  SiteID, 211
 ## 
-## Dispersion parameter for nbinom2 family (): 9.96e+05 
+## Dispersion parameter for nbinom2 family (): 1.15e+07 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -2.5587     0.2004 -12.766  < 2e-16 ***
-## Hoito20201                1.1287     0.2639   4.276 1.90e-05 ***
-## scale(Vuosi)              0.7222     0.1013   7.127 1.03e-12 ***
-## poly(NN, 2)1            -17.1006     5.8166  -2.940  0.00328 ** 
-## poly(NN, 2)2            -11.5553     6.5738  -1.758  0.07879 .  
-## Hoito20201:scale(Vuosi)  -0.1295     0.1361  -0.951  0.34136    
+## (Intercept)             -1.59530    0.22838  -6.985 2.84e-12 ***
+## Hoito20201               0.21758    0.28154   0.773   0.4396    
+## scale(Vuosi)             0.60369    0.11322   5.332 9.72e-08 ***
+## poly(NN, 2)1            -7.17734    4.21738  -1.702   0.0888 .  
+## poly(NN, 2)2            -6.36367    4.76918  -1.334   0.1821    
+## Hoito20201:scale(Vuosi) -0.02888    0.14221  -0.203   0.8391    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-##                 R2m       R2c
-## delta     0.1969343 0.7695756
-## lognormal 0.2132351 0.8332753
-## trigamma  0.1679508 0.6563143
+##                  R2m       R2c
+## delta     0.10956361 0.7541621
+## lognormal 0.11774079 0.8104483
+## trigamma  0.09641795 0.6636762
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-9.png)<!-- -->
@@ -766,31 +766,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##    986.8   1029.1   -485.4    970.8     1448 
+##    681.4    719.7   -332.7    665.4      885 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 4.856    2.204   
-## Number of obs: 1456, groups:  SiteID, 254
+##  SiteID (Intercept) 3.406    1.845   
+## Number of obs: 893, groups:  SiteID, 153
 ## 
-## Dispersion parameter for nbinom2 family (): 1.81e+07 
+## Dispersion parameter for nbinom2 family (): 1.93e+07 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -4.0885     0.3684 -11.097  < 2e-16 ***
-## Hoito20201                0.9079     0.4300   2.112  0.03473 *  
-## scale(Vuosi)              0.4044     0.1683   2.402  0.01630 *  
-## poly(NN, 2)1            -26.5819     8.3562  -3.181  0.00147 ** 
-## poly(NN, 2)2              0.9669     9.3911   0.103  0.91799    
-## Hoito20201:scale(Vuosi)   0.8871     0.2809   3.158  0.00159 ** 
+## (Intercept)              -3.4493     0.3982  -8.662  < 2e-16 ***
+## Hoito20201                0.2761     0.5330   0.518 0.604437    
+## scale(Vuosi)              0.1713     0.2297   0.746 0.455776    
+## poly(NN, 2)1            -27.9204     7.0292  -3.972 7.13e-05 ***
+## poly(NN, 2)2             -7.1217     8.2776  -0.860 0.389593    
+## Hoito20201:scale(Vuosi)   1.1321     0.3240   3.494 0.000476 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.1568898 0.8361305
-## lognormal 0.1660916 0.8851705
-## trigamma  0.1391615 0.7416491
+## delta     0.2517477 0.8067325
+## lognormal 0.2694860 0.8635755
+## trigamma  0.2184429 0.7000066
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-10.png)<!-- -->
@@ -835,31 +835,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##  10689.6  10734.5  -5336.8  10673.6     2003 
+##   7358.7   7400.4  -3671.4   7342.7     1350 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 1.25     1.118   
-## Number of obs: 2011, groups:  SiteID, 416
+##  SiteID (Intercept) 1.299    1.14    
+## Number of obs: 1358, groups:  SiteID, 278
 ## 
-## Dispersion parameter for nbinom2 family (): 6.06 
+## Dispersion parameter for nbinom2 family (): 5.01 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              1.25268    0.07952  15.752  < 2e-16 ***
-## Hoito20201               0.31948    0.12293   2.599  0.00935 ** 
-## scale(Vuosi)             0.06088    0.02829   2.152  0.03138 *  
-## poly(NN, 2)1             3.90366    2.38019   1.640  0.10099    
-## poly(NN, 2)2             2.90230    2.39126   1.214  0.22486    
-## Hoito20201:scale(Vuosi)  0.11126    0.04273   2.604  0.00923 ** 
+## (Intercept)              1.35267    0.11882  11.384   <2e-16 ***
+## Hoito20201               0.21325    0.15357   1.389   0.1649    
+## scale(Vuosi)             0.05670    0.03921   1.446   0.1482    
+## poly(NN, 2)1            -1.73116    2.54359  -0.681   0.4961    
+## poly(NN, 2)2            -3.26722    2.62344  -1.245   0.2130    
+## Hoito20201:scale(Vuosi)  0.12434    0.05137   2.421   0.0155 *  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                  R2m       R2c
-## delta     0.03172831 0.8173159
-## lognormal 0.03245246 0.8359698
-## trigamma  0.03083182 0.7942223
+## delta     0.02338333 0.8091071
+## lognormal 0.02398239 0.8298358
+## trigamma  0.02263145 0.7830907
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-11.png)<!-- -->
@@ -904,31 +904,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##       NA       NA       NA       NA     1754 
+##   2431.9   2472.3  -1207.9   2415.9     1149 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 0.7687   0.8767  
-## Number of obs: 1762, groups:  SiteID, 382
+##  SiteID (Intercept) 0.6276   0.7922  
+## Number of obs: 1157, groups:  SiteID, 256
 ## 
-## Dispersion parameter for nbinom2 family (): 2.59e+07 
+## Dispersion parameter for nbinom2 family (): 3.46e+07 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)             -0.97391    0.09205 -10.580  < 2e-16 ***
-## Hoito20201               0.28063    0.13188   2.128  0.03335 *  
-## scale(Vuosi)             0.67207    0.06118  10.986  < 2e-16 ***
-## poly(NN, 2)1            15.25609    2.29308   6.653 2.87e-11 ***
-## poly(NN, 2)2            -5.95104    2.26182  -2.631  0.00851 ** 
-## Hoito20201:scale(Vuosi)  0.10120    0.08617   1.174  0.24024    
+## (Intercept)             -0.56098    0.11913  -4.709 2.49e-06 ***
+## Hoito20201              -0.13312    0.14960  -0.890    0.374    
+## scale(Vuosi)             0.68640    0.07724   8.887  < 2e-16 ***
+## poly(NN, 2)1            11.51851    2.15448   5.346 8.98e-08 ***
+## poly(NN, 2)2            -9.45737    2.29970  -4.112 3.91e-05 ***
+## Hoito20201:scale(Vuosi)  0.08421    0.09732   0.865    0.387    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.2760456 0.5863368
-## lognormal 0.3168908 0.6730944
-## trigamma  0.2165782 0.4600246
+## delta     0.3237110 0.6081003
+## lognormal 0.3635211 0.6828847
+## trigamma  0.2668306 0.5012488
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-12.png)<!-- -->
@@ -973,31 +973,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   8157.2   8201.0  -4070.6   8141.2     1761 
+##   6451.2   6491.8  -3217.6   6435.2     1183 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 3.006    1.734   
-## Number of obs: 1769, groups:  SiteID, 335
+##  SiteID (Intercept) 2.313    1.521   
+## Number of obs: 1191, groups:  SiteID, 225
 ## 
-## Dispersion parameter for nbinom2 family (): 2.46 
+## Dispersion parameter for nbinom2 family (): 2.53 
 ## 
 ## Conditional model:
 ##                          Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -0.02790    0.14575  -0.191    0.848    
-## Hoito20201                1.20005    0.21934   5.471 4.47e-08 ***
-## scale(Vuosi)             -0.23608    0.05098  -4.631 3.64e-06 ***
-## poly(NN, 2)1            -34.86728    4.92180  -7.084 1.40e-12 ***
-## poly(NN, 2)2            -25.16570    5.59857  -4.495 6.96e-06 ***
-## Hoito20201:scale(Vuosi)   0.02505    0.07319   0.342    0.732    
+## (Intercept)               0.71538    0.18030   3.968 7.25e-05 ***
+## Hoito20201                0.61659    0.23251   2.652  0.00800 ** 
+## scale(Vuosi)             -0.12398    0.05798  -2.138  0.03249 *  
+## poly(NN, 2)1            -24.21366    3.90109  -6.207 5.40e-10 ***
+## poly(NN, 2)2            -12.89458    4.44856  -2.899  0.00375 ** 
+## Hoito20201:scale(Vuosi)  -0.07363    0.07591  -0.970  0.33205    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.2895549 0.8988572
-## lognormal 0.2951912 0.9163538
-## trigamma  0.2813256 0.8733113
+## delta     0.2155812 0.8640231
+## lognormal 0.2211365 0.8862881
+## trigamma  0.2076693 0.8323134
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-13.png)<!-- -->
@@ -1042,31 +1042,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##       NA       NA       NA       NA     1425 
+##       NA       NA       NA       NA      852 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 7.868    2.805   
-## Number of obs: 1433, groups:  SiteID, 246
+##  SiteID (Intercept) 10.83    3.291   
+## Number of obs: 860, groups:  SiteID, 139
 ## 
-## Dispersion parameter for nbinom2 family (): 3.1e+08 
+## Dispersion parameter for nbinom2 family (): 7.44e+09 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -5.0340     0.5741  -8.769  < 2e-16 ***
-## Hoito20201               -0.5683     0.6043  -0.940   0.3470    
-## scale(Vuosi)              0.4112     0.1830   2.247   0.0246 *  
-## poly(NN, 2)1             37.8785     8.6578   4.375 1.21e-05 ***
-## poly(NN, 2)2              1.5465     8.7903   0.176   0.8603    
-## Hoito20201:scale(Vuosi)   0.1750     0.4701   0.372   0.7097    
+## (Intercept)              -4.8633     0.8109  -5.997 2.01e-09 ***
+## Hoito20201               -1.2725     0.7995  -1.592  0.11149    
+## scale(Vuosi)              0.4878     0.2504   1.948  0.05140 .  
+## poly(NN, 2)1             26.1507     8.0459   3.250  0.00115 ** 
+## poly(NN, 2)2             -3.2598     4.3888  -0.743  0.45764    
+## Hoito20201:scale(Vuosi)   0.2070     0.5253   0.394  0.69355    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.1356938 0.9971354
-## lognormal 0.1356988 0.9971721
-## trigamma  0.1356887 0.9970977
+## delta     0.1151215 0.9998515
+## lognormal 0.1151215 0.9998516
+## trigamma  0.1151215 0.9998514
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-14.png)<!-- -->
@@ -1111,31 +1111,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##    526.8    568.9   -255.4    510.8     1423 
+##    345.7    383.7   -164.8    329.7      847 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 16.62    4.076   
-## Number of obs: 1431, groups:  SiteID, 239
+##  SiteID (Intercept) 17.77    4.216   
+## Number of obs: 855, groups:  SiteID, 131
 ## 
-## Dispersion parameter for nbinom2 family (): 3.56 
+## Dispersion parameter for nbinom2 family (): 3.76 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -8.5627     1.1021  -7.770 7.87e-15 ***
-## Hoito20201                1.4919     0.9085   1.642    0.101    
-## scale(Vuosi)              0.2713     0.2750   0.987    0.324    
-## poly(NN, 2)1             88.1146    21.1261   4.171 3.03e-05 ***
-## poly(NN, 2)2              1.4196    14.4605   0.098    0.922    
-## Hoito20201:scale(Vuosi)  -0.5270     0.3930  -1.341    0.180    
+## (Intercept)             -7.48031    1.23225  -6.070 1.28e-09 ***
+## Hoito20201               0.09166    1.16463   0.079   0.9373    
+## scale(Vuosi)             0.76467    0.42975   1.779   0.0752 .  
+## poly(NN, 2)1            61.68904   18.75320   3.290   0.0010 ** 
+## poly(NN, 2)2            13.88780   15.24089   0.911   0.3622    
+## Hoito20201:scale(Vuosi) -0.71879    0.57056  -1.260   0.2077    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.2815800 0.9880694
-## lognormal 0.2819789 0.9894691
-## trigamma  0.2810662 0.9862664
+## delta     0.2114055 0.9883756
+## lognormal 0.2116842 0.9896785
+## trigamma  0.2110509 0.9867175
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-15.png)<!-- -->
@@ -1180,31 +1180,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##    993.9   1036.3   -489.0    977.9     1472 
+##    641.5    679.8   -312.7    625.5      878 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 2.816    1.678   
-## Number of obs: 1480, groups:  SiteID, 268
+##  SiteID (Intercept) 4.276    2.068   
+## Number of obs: 886, groups:  SiteID, 150
 ## 
-## Dispersion parameter for nbinom2 family (): 5.73e+08 
+## Dispersion parameter for nbinom2 family (): 7.27 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -4.2076     0.3352 -12.553   <2e-16 ***
-## Hoito20201                0.5812     0.3404   1.707   0.0878 .  
-## scale(Vuosi)             -0.1222     0.1202  -1.016   0.3094    
-## poly(NN, 2)1             68.9176     7.2701   9.480   <2e-16 ***
-## poly(NN, 2)2             -7.2618     5.5379  -1.311   0.1898    
-## Hoito20201:scale(Vuosi)   0.3078     0.2094   1.470   0.1415    
+## (Intercept)             -3.96092    0.53827  -7.359 1.86e-13 ***
+## Hoito20201              -0.04643    0.53622  -0.087    0.931    
+## scale(Vuosi)             0.02856    0.22262   0.128    0.898    
+## poly(NN, 2)1            54.09495    9.08603   5.954 2.62e-09 ***
+## poly(NN, 2)2            -5.79058    7.64481  -0.757    0.449    
+## Hoito20201:scale(Vuosi)  0.33202    0.31347   1.059    0.290    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.5607554 0.9872911
-## lognormal 0.5610388 0.9877901
-## trigamma  0.5604483 0.9867503
+## delta     0.4412769 0.9687178
+## lognormal 0.4427833 0.9720247
+## trigamma  0.4393885 0.9645723
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-16.png)<!-- -->
@@ -1249,31 +1249,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   3207.7   3251.0  -1595.9   3191.7     1643 
+##   2218.7   2258.4  -1101.3   2202.7     1060 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 3.643    1.909   
-## Number of obs: 1651, groups:  SiteID, 318
+##  SiteID (Intercept) 3.289    1.813   
+## Number of obs: 1068, groups:  SiteID, 205
 ## 
-## Dispersion parameter for nbinom2 family (): 3.33 
+## Dispersion parameter for nbinom2 family (): 5.49 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)             -1.58679    0.18637  -8.514  < 2e-16 ***
-## Hoito20201               0.92425    0.25947   3.562 0.000368 ***
-## scale(Vuosi)             0.14520    0.09574   1.517 0.129363    
-## poly(NN, 2)1            18.95535    4.53174   4.183 2.88e-05 ***
-## poly(NN, 2)2             0.64984    4.39044   0.148 0.882333    
-## Hoito20201:scale(Vuosi) -0.11825    0.13107  -0.902 0.366965    
+## (Intercept)              -1.0294     0.2511  -4.099 4.14e-05 ***
+## Hoito20201                0.3952     0.3076   1.285  0.19881    
+## scale(Vuosi)              0.2678     0.1159   2.310  0.02086 *  
+## poly(NN, 2)1             12.4304     4.2493   2.925  0.00344 ** 
+## poly(NN, 2)2              7.3113     4.4716   1.635  0.10204    
+## Hoito20201:scale(Vuosi)  -0.2634     0.1409  -1.869  0.06163 .  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-##                 R2m       R2c
-## delta     0.1079934 0.8652594
-## lognormal 0.1114333 0.8928204
-## trigamma  0.1026100 0.8221263
+##                  R2m       R2c
+## delta     0.06297134 0.8809900
+## lognormal 0.06437165 0.9005808
+## trigamma  0.06096978 0.8529875
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-17.png)<!-- -->
@@ -1318,31 +1318,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   2112.7   2155.5  -1048.4   2096.7     1552 
+##   1637.9   1677.0   -811.0   1621.9      971 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 6.748    2.598   
-## Number of obs: 1560, groups:  SiteID, 282
+##  SiteID (Intercept) 5.594    2.365   
+## Number of obs: 979, groups:  SiteID, 170
 ## 
-## Dispersion parameter for nbinom2 family ():  5.1 
+## Dispersion parameter for nbinom2 family (): 5.27 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)             -3.62565    0.33019 -10.981  < 2e-16 ***
-## Hoito20201               1.86085    0.40527   4.592 4.40e-06 ***
-## scale(Vuosi)            -0.22060    0.13087  -1.686   0.0919 .  
-## poly(NN, 2)1            50.77243    6.97808   7.276 3.44e-13 ***
-## poly(NN, 2)2            -8.00563    6.41961  -1.247   0.2124    
-## Hoito20201:scale(Vuosi)  0.09803    0.16897   0.580   0.5618    
+## (Intercept)             -2.38496    0.39714  -6.005 1.91e-09 ***
+## Hoito20201               0.76101    0.46424   1.639    0.101    
+## scale(Vuosi)            -0.17288    0.18222  -0.949    0.343    
+## poly(NN, 2)1            41.12259    6.37667   6.449 1.13e-10 ***
+## poly(NN, 2)2             1.64129    6.60009   0.249    0.804    
+## Hoito20201:scale(Vuosi)  0.04076    0.20912   0.195    0.845    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.3231445 0.9760223
-## lognormal 0.3239727 0.9785239
-## trigamma  0.3221093 0.9728956
+## delta     0.2633221 0.9671452
+## lognormal 0.2642905 0.9707017
+## trigamma  0.2621013 0.9626612
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-18.png)<!-- -->
@@ -1387,31 +1387,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   2489.6   2532.1  -1236.8   2473.6     1493 
+##   1870.0   1908.7   -927.0   1854.0      922 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 3.577    1.891   
-## Number of obs: 1501, groups:  SiteID, 271
+##  SiteID (Intercept) 3.557    1.886   
+## Number of obs: 930, groups:  SiteID, 166
 ## 
-## Dispersion parameter for nbinom2 family (): 6.18 
+## Dispersion parameter for nbinom2 family (): 6.31 
 ## 
 ## Conditional model:
 ##                         Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -2.3720     0.2249 -10.547  < 2e-16 ***
-## Hoito20201                0.9941     0.3071   3.237  0.00121 ** 
-## scale(Vuosi)             -0.6148     0.1161  -5.297 1.18e-07 ***
-## poly(NN, 2)1              9.9205     5.3308   1.861  0.06275 .  
-## poly(NN, 2)2            -19.9967     5.6893  -3.515  0.00044 ***
-## Hoito20201:scale(Vuosi)   0.1026     0.1434   0.715  0.47457    
+## (Intercept)              -1.7854     0.3107  -5.746 9.11e-09 ***
+## Hoito20201                0.6303     0.3789   1.663   0.0962 .  
+## scale(Vuosi)             -0.7109     0.1798  -3.954 7.67e-05 ***
+## poly(NN, 2)1              5.3195     5.3279   0.998   0.3181    
+## poly(NN, 2)2            -26.9530     6.5572  -4.110 3.95e-05 ***
+## Hoito20201:scale(Vuosi)   0.2504     0.1963   1.276   0.2020    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                 R2m       R2c
-## delta     0.2101714 0.8296344
-## lognormal 0.2216379 0.8748973
-## trigamma  0.1897265 0.7489296
+## delta     0.2618008 0.8724499
+## lognormal 0.2705021 0.9014469
+## trigamma  0.2474178 0.8245185
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-19.png)<!-- -->
@@ -1456,31 +1456,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   8543.9   8588.0  -4263.9   8527.9     1833 
+##   6320.3   6361.3  -3152.1   6304.3     1234 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 3.746    1.935   
-## Number of obs: 1841, groups:  SiteID, 343
+##  SiteID (Intercept) 3.099    1.76    
+## Number of obs: 1242, groups:  SiteID, 233
 ## 
-## Dispersion parameter for nbinom2 family (): 5.26 
+## Dispersion parameter for nbinom2 family (): 5.57 
 ## 
 ## Conditional model:
-##                           Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)               0.535010   0.150371   3.558 0.000374 ***
-## Hoito20201                0.672846   0.230825   2.915 0.003557 ** 
-## scale(Vuosi)             -0.121234   0.036251  -3.344 0.000825 ***
-## poly(NN, 2)1            -20.453356   4.630454  -4.417    1e-05 ***
-## poly(NN, 2)2            -13.700221   5.011488  -2.734 0.006262 ** 
-## Hoito20201:scale(Vuosi)   0.008293   0.050100   0.166 0.868525    
+##                          Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)               0.98764    0.19724   5.007 5.52e-07 ***
+## Hoito20201                0.34117    0.25520   1.337    0.181    
+## scale(Vuosi)             -0.04689    0.04334  -1.082    0.279    
+## poly(NN, 2)1            -19.06926    4.11219  -4.637 3.53e-06 ***
+## poly(NN, 2)2             -0.72612    4.34813  -0.167    0.867    
+## Hoito20201:scale(Vuosi)  -0.05810    0.05402  -1.075    0.282    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##                  R2m       R2c
-## delta     0.09884666 0.9425145
-## lognormal 0.09947198 0.9484770
-## trigamma  0.09806682 0.9350786
+## delta     0.08438145 0.9336286
+## lognormal 0.08497095 0.9401510
+## trigamma  0.08365538 0.9255950
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-20.png)<!-- -->
@@ -1525,31 +1525,31 @@ print(plot_grid(p1, p2, align = 'h', ncol=2, rel_widths=c(1,0.8)))
 ## Data: mod.data2
 ## 
 ##      AIC      BIC   logLik deviance df.resid 
-##   3249.0   3294.0  -1616.5   3233.0     2053 
+##   2304.5   2346.4  -1144.2   2288.5     1391 
 ## 
 ## Random effects:
 ## 
 ## Conditional model:
 ##  Groups Name        Variance Std.Dev.
-##  SiteID (Intercept) 11.19    3.344   
-## Number of obs: 2061, groups:  SiteID, 422
+##  SiteID (Intercept) 10.07    3.173   
+## Number of obs: 1399, groups:  SiteID, 283
 ## 
-## Dispersion parameter for nbinom2 family (): 5.94 
+## Dispersion parameter for nbinom2 family (): 5.91 
 ## 
 ## Conditional model:
 ##                          Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)              -3.75638    0.41384  -9.077  < 2e-16 ***
-## Hoito20201                0.02715    0.41041   0.066 0.947261    
-## scale(Vuosi)             -0.19612    0.06384  -3.072 0.002126 ** 
-## poly(NN, 2)1            -21.46386    9.80316  -2.189 0.028562 *  
-## poly(NN, 2)2            -45.98574   12.11656  -3.795 0.000147 ***
-## Hoito20201:scale(Vuosi)  -0.06521    0.11071  -0.589 0.555823    
+## (Intercept)              -2.92503    0.46537  -6.285 3.27e-10 ***
+## Hoito20201               -0.49886    0.47215  -1.057 0.290705    
+## scale(Vuosi)             -0.09013    0.07332  -1.229 0.218968    
+## poly(NN, 2)1             -7.16677    8.47372  -0.846 0.397684    
+## poly(NN, 2)2            -32.51239    9.72742  -3.342 0.000831 ***
+## Hoito20201:scale(Vuosi)  -0.16838    0.11403  -1.477 0.139783    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-##                 R2m       R2c
-## delta     0.1049197 0.9832776
-## lognormal 0.1050838 0.9848161
-## trigamma  0.1047201 0.9814072
+##                  R2m       R2c
+## delta     0.07795713 0.9751340
+## lognormal 0.07818653 0.9780035
+## trigamma  0.07766306 0.9714556
 ```
 
 ![](singlespecies_files/figure-html/unnamed-chunk-2-21.png)<!-- -->
